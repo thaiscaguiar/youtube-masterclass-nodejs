@@ -50,6 +50,11 @@ form.addEventListener("submit", (event) => {
     if (!/^http/.test(url)) 
         return alert("Digite a url da maneira correta")
 
+    try{
+        const res = await fetch(`http://localhost:3000?url=${url}&name=${name}`).then((data) => data.json())
+    } catch (err) {
+        console.log(err)
+    }    
     addElement({ name, url })
 
     input.value = ""
